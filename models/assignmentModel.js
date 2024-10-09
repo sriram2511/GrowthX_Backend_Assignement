@@ -20,9 +20,9 @@ const AssignmentSchema = new mongoose.Schema(
       ref: 'User', // Reference to the User model
     },
 
-    isAccepted: {
-      type: Boolean,
-      default: false,
+    status: {
+      type: String,
+      default: 'pending',
     },
 
     // Added timestamp fields
