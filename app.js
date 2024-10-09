@@ -3,16 +3,18 @@ import dotenv from 'dotenv'
 import connect from './db/connect.js'
 import cookieParser from 'cookie-parser'
 import userRouter from './routes/userRoutes.js'
+import cors from 'cors'
+
 dotenv.config()
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-
+app.use(cors())
 //routes
 app.use('/home', (req, res) => {
-  res.status(200).send('gomma')
+  res.status(200).send('homeeeee')
 })
 app.use('/api', userRouter)
 

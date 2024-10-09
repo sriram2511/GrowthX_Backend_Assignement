@@ -1,0 +1,32 @@
+[
+  {
+    "name": "bala",
+    "userId": "bala2501",
+    "role": "user",
+    "password": "bala@123"
+  },
+  {
+    "name": "sriram",
+    "role": "user",
+    "userId": "sri2511",
+    "password": "sri@123"
+  },
+  {
+    "name": "yuvi",
+    "role": "user",
+    "userId": "yuvi2010",
+    "password": "sri@123"
+  },
+  {
+    "name": "chitra",
+    "role": "admin",
+    "userId": "chitra910",
+    "password": "sri@123"
+  },
+  {
+    "name": "sachin",
+    "role": "admin",
+    "userId": "ten09",
+    "password": "sachin@123"
+  }
+]
