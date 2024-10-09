@@ -12,3 +12,16 @@ This project is a backend system for an Assignment Submission Portal where users
 
    ```bash
    git clone https://github.com/yourusername/assignment-submission-portal.git
+2. Install all dependencies:
+    ```bash
+    npm install
+3. Create a .env file in the root of the project and add the following
+   ```bash
+   MONGO_URI=your_mongo_db_connection_string
+   JWT_SECRET=your_jwt_secret_key
+4. Start the server:
+   ```bash
+   npm start
+
+
+    
