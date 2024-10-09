@@ -11,7 +11,7 @@ This project is a backend system for an Assignment Submission Portal where users
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/assignment-submission-portal.git
+   git clone https://github.com/sriram2511/GrowthX_Backend_Assignement.git
 2. Install all dependencies:
     ```bash
     npm install
