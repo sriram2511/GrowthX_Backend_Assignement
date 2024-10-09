@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import connect from './db/connect.js'
 import cookieParser from 'cookie-parser'
 import userRouter from './routes/userRoutes.js'
+import AdminRouter from './routes/AdminRoutes.js'
 import cors from 'cors'
 
 dotenv.config()
@@ -17,6 +18,7 @@ app.use('/home', (req, res) => {
   res.status(200).send('homeeeee')
 })
 app.use('/api', userRouter)
+app.use('/api', AdminRouter)
 
 const startServer = async () => {
   try {

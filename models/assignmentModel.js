@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const AssignmentSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: [true, 'Provide userId'],
       ref: 'User', // Reference to the User model
     },
@@ -15,7 +15,7 @@ const AssignmentSchema = new mongoose.Schema(
     },
 
     admin: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: [true, 'Provide admin id'],
       ref: 'User', // Reference to the User model
     },

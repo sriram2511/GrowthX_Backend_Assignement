@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
+import Assignment from '../models/assignmentModel.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
@@ -66,7 +67,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
 export const loginUser = asyncHandler(async (req, res) => {
   const { userId, password } = req.body
-  console.log(`printttt${req.body}`)
+  //   console.log(`printttt${req.body}`)
 
   if (!userId || !password) {
     return res.status(400).json({ message: 'All fields are required' })
@@ -100,5 +101,38 @@ export const loginUser = asyncHandler(async (req, res) => {
 })
 
 export const userDetails = asyncHandler(async (req, res) => {
-  res.status(200).send(req.user)
+  const users = await User.find({ role: 'admin' }, 'name userId role -_id')
+  res.status(200).json(users)
+})
+
+export const uploadAssignment = asyncHandler(async (req, res) => {
+  const { task, admin } = req.body
+
+  // Check if admin is provided
+  if (!admin) {
+    return res.status(400).json({ message: 'Admin ID is required.' })
+  }
+
+  // Find the admin by ID
+  const foundAdmin = await User.findOne({ userId: admin })
+  if (!foundAdmin) {
+    return res.status(404).json({ message: 'Give a proper admin ID.' })
+  }
+
+  //   checl assignemen is there or not
+  // Create a new assignment
+  const newAssignment = new Assignment({
+    userId: req.user.userId,
+    task,
+    admin,
+  })
+
+  // Save the assignment to the database
+  await newAssignment.save()
+
+  // Respond with the created assignment
+  res.status(201).json({
+    message: 'Assignment created successfully.',
+    assignment: newAssignment,
+  })
 })
