@@ -21,7 +21,4 @@ This project is a backend system for an Assignment Submission Portal where users
    JWT_SECRET=your_jwt_secret_key
 4. Start the server:
    ```bash
-   npm start
-
-
-    
+   npm start 
