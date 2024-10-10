@@ -25,6 +25,13 @@ export const rejectAssignment = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: 'Assignment not found' })
   }
 
+  if (!(assignment.admin === req.user.userId)) {
+    return res
+      .status(404)
+      .json({ message: 'you can only accept assignment tagged to you ' })
+  }
+  console.log(!(assignment.admin === req.user.userId))
+
   assignment.status = 'rejected' // Set assignment as rejected
   await assignment.save() // Save the updated assignment
 
@@ -40,11 +47,15 @@ export const acceptAssignment = asyncHandler(async (req, res) => {
   if (!assignment) {
     return res.status(404).json({ message: 'Assignment not found' })
   }
-
+  if (!(assignment.admin === req.user.userId)) {
+    return res
+      .status(404)
+      .json({ message: 'you can only accept assignment tagged to you ' })
+  }
   assignment.status = 'accepted' // Set assignment as rejected
   await assignment.save() // Save the updated assignment
 
   res
     .status(200)
-    .json({ message: 'Assignment rejected successfully', assignment })
+    .json({ message: 'Assignment accepted successfully', assignment })
 })
